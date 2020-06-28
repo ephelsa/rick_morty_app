@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Rick and Morty</string>
+
+    <!-- Mock User Interface Design -->
+    <string name="mock" />
+    <string name="mock.title">Super fucking awesome title</string>
+    <string name="mock.content_description_thumbnail">Thumbnail Image</string>
+
+    <!-- Button -->
+    <string name="button" />
+    <string name="button.continue">Continue</string>
+    <string name="button.take_my_time">Take my time!</string>
+
+</resources>

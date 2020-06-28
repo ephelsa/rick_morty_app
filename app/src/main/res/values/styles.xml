@@ -1,0 +1,62 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorAccent">@color/accent</item>
+        <item name="android:windowBackground">@color/background</item>
+    </style>
+
+    <!-- Text Appearance -->
+    <style name="TextAppearance" />
+
+    <style name="TextAppearance.Header">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">@dimen/text.header_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">@dimen/text.header_margin_bottom</item>
+    </style>
+
+    <style name="TextAppearance.Header.Inverse">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="TextAppearance.Description">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:textSize">@dimen/text.description_size</item>
+    </style>
+
+    <style name="TextAppearance.Description.Inverse">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <!-- Content Container -->
+    <style name="ContentContainer" />
+
+    <style name="ContentContainer.Parent">
+        <item name="android:paddingStart">@dimen/content_container.padding_start</item>
+        <item name="android:paddingEnd">@dimen/content_container.padding_end</item>
+        <item name="android:paddingTop">@dimen/content_container.padding_top</item>
+        <item name="android:paddingBottom">@dimen/content_container.padding_bottom</item>
+    </style>
+
+    <!-- Button -->
+    <style name="Button">
+        <item name="android:drawableTint">@color/accent</item>
+        <item name="android:textSize">@dimen/text.description_size</item>
+        <item name="android:textColor">@color/accent</item>
+    </style>
+
+    <style name="Button.TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:drawableTint">@color/accent</item>
+        <item name="android:textSize">@dimen/text.description_size</item>
+    </style>
+
+</resources>
