@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:translationX="12dp"
+    app:cardBackgroundColor="#383838"
+    app:cardCornerRadius="@dimen/visual.corner_radius">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/content_container.padding_start"
+        android:layout_marginTop="@dimen/content_container.padding_top"
+        android:layout_marginEnd="@dimen/content_container.padding_end"
+        android:layout_marginBottom="@dimen/content_container.padding_bottom">
+
+        <TextView
+            android:id="@+id/title_text"
+            style="@style/TextAppearance.Header.Inverse"
+            android:layout_alignParentTop="true" />
+
+        <TextView
+            android:id="@+id/description_text"
+            style="@style/TextAppearance.Description.Inverse"
+            android:layout_below="@id/title_text"
+            android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/continue_button"
+            style="@style/Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/description_text"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:drawableStart="@drawable/ic_outline_arrow_forward_ios_24"
+            android:text="@string/button.take_my_time" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

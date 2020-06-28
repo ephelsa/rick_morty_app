@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/ContentContainer.Parent">
+
+    <TextView
+        android:id="@+id/header_text"
+        style="@style/TextAppearance.Header"
+        android:layout_alignParentTop="true"
+        android:text="@string/app_name" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/options_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_text" />
+
+</RelativeLayout>

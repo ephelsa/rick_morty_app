@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Text -->
+    <dimen name="text" />
+    <dimen name="text.header_size">26sp</dimen>
+    <dimen name="text.header_margin_bottom">26dp</dimen>
+    <dimen name="text.description_size">16sp</dimen>
+
+    <!-- Content Container -->
+    <dimen name="content_container" />
+    <dimen name="content_container.padding_start">12dp</dimen>
+    <dimen name="content_container.padding_end">12dp</dimen>
+    <dimen name="content_container.padding_top">8dp</dimen>
+    <dimen name="content_container.padding_bottom">8dp</dimen>
+
+    <!-- Visual -->
+    <dimen name="visual" />
+    <dimen name="visual.corner_radius">4dp</dimen>
+
+</resources>
