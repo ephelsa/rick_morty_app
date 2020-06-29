@@ -18,4 +18,8 @@
     <dimen name="visual" />
     <dimen name="visual.corner_radius">4dp</dimen>
 
+    <!-- Standard -->
+    <dimen name="standard" />
+    <dimen name="standard.image_size">200dp</dimen>
+
 </resources>

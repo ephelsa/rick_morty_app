@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.ephelsa.rickandmorty.R
 import com.github.ephelsa.rickandmorty.databinding.FragmentHomeBinding
 import com.github.ephelsa.rickandmorty.resourceoption.domain.ResourceOption
+import com.github.ephelsa.rickandmorty.ui.loader.LoaderDialogFragment
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -20,11 +21,16 @@ import kotlinx.coroutines.launch
 class HomeFragment : Fragment(), ResourceOptionAdapter.ViewHolder.ActionCallback {
 
     private val viewModel: HomeViewModel by lazy {
-        ViewModelProvider(this, HomeViewModelProvider()).get(HomeViewModel::class.java)
+        ViewModelProvider(this, HomeViewModelProvider(requireActivity().application))
+            .get(HomeViewModel::class.java)
     }
     private val resourceOptionAdapter: ResourceOptionAdapter by lazy { ResourceOptionAdapter(actionCallback = this) }
     private lateinit var binding: FragmentHomeBinding
+    private lateinit var loaderDialogFragment: LoaderDialogFragment
 
+    companion object {
+        private val TAG = HomeFragment::class.java.simpleName
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -32,6 +38,7 @@ class HomeFragment : Fragment(), ResourceOptionAdapter.ViewHolder.ActionCallback
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         init(view)
+        super.onViewCreated(view, savedInstanceState)
     }
 
     private fun init(view: View) {
@@ -42,7 +49,12 @@ class HomeFragment : Fragment(), ResourceOptionAdapter.ViewHolder.ActionCallback
     private fun bindInit(view: View) {
         binding = FragmentHomeBinding.bind(view)
 
+        loaderDialogInit()
         configureResourceOptionRecycler()
+    }
+
+    private fun loaderDialogInit() {
+        loaderDialogFragment = LoaderDialogFragment()
     }
 
     private fun configureResourceOptionRecycler() {
@@ -63,9 +75,15 @@ class HomeFragment : Fragment(), ResourceOptionAdapter.ViewHolder.ActionCallback
 
     private fun uiChangeHandler(change: HomeViewModel.UIChange) {
         when (change) {
-            is HomeViewModel.UIChange.AllResourceOptions -> resourceOptionAdapter.updateResourceOptions(
-                change.resourceOptions
-            )
+            is HomeViewModel.UIChange.AllResourceOptions -> resourceOptionAdapter.updateResourceOptions(change.resourceOptions)
+            is HomeViewModel.UIChange.Loading -> handleLoading(change.isLoading)
+        }
+    }
+
+    private fun handleLoading(isLoading: Boolean) {
+        loaderDialogFragment.apply {
+            if (isLoading) show(this@HomeFragment.parentFragmentManager, "Loader $TAG")
+            else dismiss()
         }
     }
 

@@ -85,7 +85,6 @@ class ResourceOptionAdapter(
 
         override fun onClick(v: View?) {
             when (v) {
-                binding.itemContainer,
                 binding.moreInfo.continueButton -> clickContinueAction()
             }
         }

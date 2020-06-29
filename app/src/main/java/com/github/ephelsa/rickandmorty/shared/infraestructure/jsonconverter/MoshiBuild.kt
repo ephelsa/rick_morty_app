@@ -8,7 +8,5 @@ object MoshiBuild {
     val moshi: Moshi = Moshi.Builder()
         .build()
 
-    val moshiConverterFactory: MoshiConverterFactory = MoshiConverterFactory.create(
-        moshi
-    )
+    val moshiConverterFactory: MoshiConverterFactory = MoshiConverterFactory.create(moshi)
 }

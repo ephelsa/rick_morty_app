@@ -1,21 +1,21 @@
 package com.github.ephelsa.rickandmorty.ui.home
 
-import android.util.Log
 import com.github.ephelsa.rickandmorty.resourceoption.domain.ResourceOption
 import com.github.ephelsa.rickandmorty.resourceoption.usecase.GetAllResourceOptionsUseCase
 import com.github.ephelsa.rickandmorty.shared.data.NetworkResource
 import com.github.ephelsa.rickandmorty.shared.infraestructure.viewmodel.ScopedViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.channels.ConflatedBroadcastChannel
-import kotlinx.coroutines.channels.produce
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 @ExperimentalCoroutinesApi
 class HomeViewModel(
-        uiDispatcher: CoroutineDispatcher,
-        private val getAllResourceOptionsUseCase: GetAllResourceOptionsUseCase
+    uiDispatcher: CoroutineDispatcher,
+    private val getAllResourceOptionsUseCase: GetAllResourceOptionsUseCase
 ) : ScopedViewModel(uiDispatcher) {
 
     companion object {
@@ -38,9 +38,12 @@ class HomeViewModel(
                 emit(getAllResourceOptionsUseCase())
             }.collect {
                 when (it) {
-                    is NetworkResource.Loading -> Log.v(TAG, "On Loading -> ${it.message}")
-                    is NetworkResource.Success -> handleAllResourceOptionChange(it.data!!)
-                    is NetworkResource.Error -> Log.v(TAG, "On Error -> ${it.errorMessage}")
+                    is NetworkResource.Loading -> handleLoading(true)
+                    is NetworkResource.Success -> {
+                        handleLoading(false)
+                        handleAllResourceOptionChange(it.data!!)
+                    }
+                    is NetworkResource.Error -> handleLoading(false)
                 }
             }
         }
@@ -50,8 +53,13 @@ class HomeViewModel(
         _uiChange.value = UIChange.AllResourceOptions(resourceOptions)
     }
 
+    private fun handleLoading(isLoading: Boolean) {
+        _uiChange.value = UIChange.Loading(isLoading)
+    }
+
     sealed class UIChange {
         object Init : UIChange()
+        data class Loading(val isLoading: Boolean) : UIChange()
         data class AllResourceOptions(val resourceOptions: List<ResourceOption>) : UIChange()
     }
 }

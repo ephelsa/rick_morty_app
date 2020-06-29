@@ -6,7 +6,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlin.coroutines.CoroutineContext
 
-interface ScopeCoroutine : CoroutineScope {
+interface ScopedCoroutine : CoroutineScope {
 
     var job: Job
     val uiDispatcher: CoroutineDispatcher
