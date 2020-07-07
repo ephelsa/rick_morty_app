@@ -1,6 +1,7 @@
 package com.github.ephelsa.rickandmorty.character.infrastructure
 
 import com.github.ephelsa.rickandmorty.character.domain.Character
+import com.github.ephelsa.rickandmorty.shared.infraestructure.jsonconverter.JSON
 
 data class CharacterJSON(
     val id: Int,
@@ -13,8 +14,9 @@ data class CharacterJSON(
     val episode: List<String>,
     val url: String,
     val created: String
-)
+) : JSON<Character>() {
 
-fun CharacterJSON.buildDomain(): Character = Character(
-    id, name, status, species, type, gender, image, episode, url, created
-)
+    override fun buildDomain(): Character = Character(
+        id, name, status, species, type, gender, image, episode, url, created
+    )
+}

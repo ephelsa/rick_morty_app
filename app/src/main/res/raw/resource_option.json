@@ -1,4 +1,10 @@
 {
+  "info": {
+    "count": 3,
+    "pages": 1,
+    "next": null,
+    "prev": null
+  },
   "results": [
     {
       "thumbnail_url": "https://miro.medium.com/max/3840/1*j55XGyX4ZGimd0mjGeYXQQ.png",

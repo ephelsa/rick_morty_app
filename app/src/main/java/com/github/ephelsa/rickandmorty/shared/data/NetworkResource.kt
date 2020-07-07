@@ -8,8 +8,8 @@ sealed class NetworkResource<out DataType : Any>(
     data class Loading(val waitingMessage: String) :
         NetworkResource<Nothing>(message = waitingMessage)
 
-    data class Success<DataType : Any>(val results: DataType) :
-        NetworkResource<DataType>(data = results)
+    data class Success<DataType : Any>(val resultData: DataType) :
+        NetworkResource<DataType>(data = resultData)
 
     data class Error(val errorMessage: String, val exception: Exception) :
         NetworkResource<Nothing>(message = errorMessage, error = exception)

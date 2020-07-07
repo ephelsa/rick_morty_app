@@ -41,7 +41,7 @@ class HomeViewModel(
                     is NetworkResource.Loading -> handleLoading(true)
                     is NetworkResource.Success -> {
                         handleLoading(false)
-                        handleAllResourceOptionChange(it.data!!)
+                        handleAllResourceOptionChange(it.resultData.results)
                     }
                     is NetworkResource.Error -> handleLoading(false)
                 }

@@ -1,5 +1,6 @@
-package com.github.ephelsa.rickandmorty
+package com.github.ephelsa.rickandmorty.integrationtest
 
+import com.github.ephelsa.rickandmorty.ScopedCoroutineTestAbstract
 import com.github.ephelsa.rickandmorty.character.data.CharacterRepository
 import com.github.ephelsa.rickandmorty.character.infrastructure.CharacterServiceDataSource
 import com.github.ephelsa.rickandmorty.character.infrastructure.CharacterServiceRepository
@@ -49,7 +50,7 @@ class CharacterTest : ScopedCoroutineTestAbstract() {
             getAllCharactersUseCase = GetCharactersUseCase(characterRepository)
             val useCase = getAllCharactersUseCase()
 
-            Assert.assertNotNull(useCase)
+            Assert.assertNotNull(useCase.data?.results)
         }
     }
 }
